@@ -30,7 +30,8 @@ public class PlayerAttack : MonoBehaviour
             CheckAttack();
     }
 
-    private void CheckAttack()
+
+    private void CheckAttack() //Verifica se o player está tentando atacar uma posição dentro do array
     {
         if ((PlayerIsLooking == PlayerDirection.Up && PlayerMov.posY == 0)
             || (PlayerIsLooking == PlayerDirection.Left && PlayerMov.posX == 0)
@@ -44,28 +45,114 @@ public class PlayerAttack : MonoBehaviour
     private void VerifyTarget()
     {
         int x = PlayerMov.posX, y = PlayerMov.posY;
+        BlockType block;
         switch (PlayerIsLooking)
         {
             case PlayerDirection.Up:
-                Attack(LV.pos[x][y - 1].GetComponent<BlockType>());
+                block = LV.pos[x][y - 1].GetComponent<BlockType>();
+                switch (block.type)
+                {
+                    case BlockType.Type.MovableRock:
+                        if (CheckValidPosition(x, y - 2))
+                        {
+                            MoveRockToPosition(x, y - 1, x, y - 2);
+                        }
+                        break;
+                    default:
+                        if (block.canBeAttacked)
+                        {
+                            Attack(block);
+                        }
+                        break;
+                }
                 break;
             case PlayerDirection.Down:
-                Attack(LV.pos[x][y + 1].GetComponent<BlockType>());
+                block = LV.pos[x][y + 1].GetComponent<BlockType>();
+                switch (block.type)
+                {
+                    case BlockType.Type.MovableRock:
+                        if (CheckValidPosition(x, y + 2))
+                        {
+                            MoveRockToPosition(x, y + 1, x, y + 2);
+                        }
+                        break;
+                    default:
+                        if (block.canBeAttacked)
+                        {
+                            Attack(block);
+                        }
+                        break;
+                }
                 break;
             case PlayerDirection.Right:
-                Attack(LV.pos[x + 1][y].GetComponent<BlockType>());
+                block = LV.pos[x + 1][y].GetComponent<BlockType>();
+                switch (block.type)
+                {
+                    case BlockType.Type.MovableRock:
+                        if (CheckValidPosition(x + 2, y))
+                        {
+                            MoveRockToPosition(x + 1, y, x + 2, y);
+                        }
+                        break;
+                    default:
+                        if (block.canBeAttacked)
+                        {
+                            Attack(block);
+                        }
+                        break;
+                }
                 break;
             case PlayerDirection.Left:
-                Attack(LV.pos[x - 1][y].GetComponent<BlockType>());
+                block = LV.pos[x - 1][y].GetComponent<BlockType>();
+                switch (block.type)
+                {
+                    case BlockType.Type.MovableRock:
+                        if (CheckValidPosition(x - 2, y))
+                        {
+                            MoveRockToPosition(x - 1, y, x - 2, y);
+                        }
+                        break;
+                    default:
+                        if (block.canBeAttacked)
+                        {
+                            Attack(block);
+                        }
+                        break;
+                }
                 break;
         }
     }
 
     private void Attack(BlockType Block)
     {
-        if (Block.type == BlockType.Type.Obstacle)
-        {
             Block.ObstacleTakeDamage();
+            onPlayerAttack?.Invoke();
+            PlayerAnimation.SetTrigger("Attack");
+    }
+
+    private bool CheckValidPosition(int posX, int posY) //Verifica se uma posição está dentro do array
+    {
+        if ((posY < 0) || (posX < 0) || (posX > (LV.pos.Length - 1)) || (posY > (LV.pos.Length - 1)))
+            return false;
+        else
+            return true;
+    }
+
+    private void MoveRockToPosition(int xOrigin, int yOrigin, int xDestination, int yDestination)
+    {
+        BlockType destinationBlock = LV.pos[xDestination][yDestination].GetComponent<BlockType>();
+        if(destinationBlock.type == BlockType.Type.Floor || destinationBlock.type == BlockType.Type.FilledHole)
+        {
+            LV.pos[xOrigin][yOrigin].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
+            destinationBlock.ChangeBlockType(BlockType.Type.MovableRock);
+            onPlayerAttack?.Invoke();
+            PlayerAnimation.SetTrigger("Attack");
+        }
+        else if (destinationBlock.type == BlockType.Type.Hole)
+        {
+            LV.pos[xOrigin][yOrigin].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
+            destinationBlock.ChangeBlockType(BlockType.Type.FilledHole);
+            destinationBlock.isFilledHole = true;
             onPlayerAttack?.Invoke();
             PlayerAnimation.SetTrigger("Attack");
         }
