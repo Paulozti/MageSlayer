@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -93,10 +94,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CheckMovement(int x, int y)
     {
-        if (LV.pos[x][y].GetComponent<BlockType>().type == BlockType.Type.Floor || LV.pos[x][y].GetComponent<BlockType>().type == BlockType.Type.Win)
+        if (LV.pos[x][y].GetComponent<BlockType>().canWalk)
         {
-            if (LV.pos[x][y].GetComponent<BlockType>().type == BlockType.Type.Win)
-                LV.didPlayerWin = true;
+//            if (LV.pos[x][y].GetComponent<BlockType>().type == BlockType.Type.Mage)
+//                LV.didPlayerWin = true;
+            if (LV.pos[x][y].GetComponent<BlockType>().type == BlockType.Type.Collectable)
+                LV.pos[x][y].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
             return true;
         }
             
@@ -105,8 +108,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveToPosition()
     {
-        transform.position = Vector2.MoveTowards(transform.position, LV.pos[posX][posY].transform.position, 1);
-        onPlayerMove?.Invoke();
+        // transform.position = Vector2.MoveTowards(transform.position, LV.pos[posX][posY].transform.position, 1);
+        MoveToPosition(transform.position, LV.pos[posX][posY].transform.position);
+        //onPlayerMove?.Invoke();
+    }
+
+    private void MoveToPosition(Vector3 initialPosition, Vector3 destination)
+    {
+        transform.position = Vector2.MoveTowards(initialPosition, destination, 1);
+        //onPlayerMove?.Invoke();
+
+        try
+        {
+            onPlayerMove();
+        }
+        catch(Exception e)
+        {
+            Debug.LogError(e);
+        }
+        finally
+        {
+            Debug.Log("onPlayerMove está nulo.");
+        }
     }
 
 }

@@ -18,6 +18,8 @@ public class LoadLevel : MonoBehaviour
     int posY = 0;
     void Start()
     {
+        GameObject map = new GameObject();
+        map.name = "Map";
         for(int i = 0; i < 10; i++)
         {
             posY = 0;
@@ -27,11 +29,13 @@ public class LoadLevel : MonoBehaviour
                 obj.transform.position += new Vector3(posX, posY, 0);
                 pos[i][f] = obj;
                 posY--;
+                obj.transform.SetParent(map.transform);
             }
             posX++;
         }
         onBoardLoaded?.Invoke();
         actionPointsText = GameObject.Find("ActionPointsText").GetComponent<Text>();
+        actionPointsText.text = actionPoints.ToString();
         PlayerMovement.onPlayerMove += UpdateGame;
         PlayerAttack.onPlayerAttack += UpdateGame;
     }
