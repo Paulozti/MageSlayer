@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetButtonDown("Attack") && LoadLevel.canPlay)
             CheckAttack();
     }
 
@@ -53,6 +53,7 @@ public class PlayerAttack : MonoBehaviour
                 switch (block.type)
                 {
                     case BlockType.Type.MovableRock:
+                    case BlockType.Type.MovableRockOnFilledHole:
                         if (CheckValidPosition(x, y - 2))
                         {
                             MoveRockToPosition(x, y - 1, x, y - 2);
@@ -71,6 +72,7 @@ public class PlayerAttack : MonoBehaviour
                 switch (block.type)
                 {
                     case BlockType.Type.MovableRock:
+                    case BlockType.Type.MovableRockOnFilledHole:
                         if (CheckValidPosition(x, y + 2))
                         {
                             MoveRockToPosition(x, y + 1, x, y + 2);
@@ -89,6 +91,7 @@ public class PlayerAttack : MonoBehaviour
                 switch (block.type)
                 {
                     case BlockType.Type.MovableRock:
+                    case BlockType.Type.MovableRockOnFilledHole:
                         if (CheckValidPosition(x + 2, y))
                         {
                             MoveRockToPosition(x + 1, y, x + 2, y);
@@ -107,6 +110,7 @@ public class PlayerAttack : MonoBehaviour
                 switch (block.type)
                 {
                     case BlockType.Type.MovableRock:
+                    case BlockType.Type.MovableRockOnFilledHole:
                         if (CheckValidPosition(x - 2, y))
                         {
                             MoveRockToPosition(x - 1, y, x - 2, y);
@@ -141,9 +145,13 @@ public class PlayerAttack : MonoBehaviour
     private void MoveRockToPosition(int xOrigin, int yOrigin, int xDestination, int yDestination)
     {
         BlockType destinationBlock = LV.pos[xDestination][yDestination].GetComponent<BlockType>();
-        if(destinationBlock.type == BlockType.Type.Floor || destinationBlock.type == BlockType.Type.FilledHole)
+        BlockType originBlock = LV.pos[xOrigin][yOrigin].GetComponent<BlockType>();
+        if (destinationBlock.type == BlockType.Type.Floor)
         {
-            LV.pos[xOrigin][yOrigin].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
+            if(originBlock.type == BlockType.Type.MovableRockOnFilledHole)
+                originBlock.ChangeBlockType(BlockType.Type.FilledHole);
+            else
+                originBlock.ChangeBlockType(BlockType.Type.Floor);
             destinationBlock.ChangeBlockType(BlockType.Type.MovableRock);
             onPlayerAttack?.Invoke();
             PlayerAnimation.SetTrigger("Attack");
@@ -153,6 +161,16 @@ public class PlayerAttack : MonoBehaviour
             LV.pos[xOrigin][yOrigin].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
             destinationBlock.ChangeBlockType(BlockType.Type.FilledHole);
             destinationBlock.isFilledHole = true;
+            onPlayerAttack?.Invoke();
+            PlayerAnimation.SetTrigger("Attack");
+        }
+        else if(destinationBlock.type == BlockType.Type.FilledHole)
+        {
+            if (originBlock.type == BlockType.Type.MovableRockOnFilledHole)
+                originBlock.ChangeBlockType(BlockType.Type.FilledHole);
+            else
+                originBlock.ChangeBlockType(BlockType.Type.Floor);
+            destinationBlock.ChangeBlockType(BlockType.Type.MovableRockOnFilledHole);
             onPlayerAttack?.Invoke();
             PlayerAnimation.SetTrigger("Attack");
         }

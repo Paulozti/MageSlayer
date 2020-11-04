@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal"))
+        if ((Input.GetButtonDown("Vertical") || Input.GetButtonDown("Horizontal")) && LoadLevel.canPlay)
             Move();
     }
 
@@ -125,10 +125,6 @@ public class PlayerMovement : MonoBehaviour
         catch(Exception e)
         {
             Debug.LogError(e);
-        }
-        finally
-        {
-            Debug.Log("onPlayerMove está nulo.");
         }
     }
 
