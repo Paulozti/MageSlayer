@@ -2,13 +2,16 @@
 
 public class Level : MonoBehaviour
 {
-    public string floor_file, wall_file, movableRock_file, hole_file, filledHole_file, collectable_file, orb_file, brokenOrb_file, mage_file, killedMage_file, destructableObstacle_file;
+    public string floor_file, wall_file, water_file, tree_file, movableRock_file, hole_file, filledHole_file, collectable_file, orb_file, brokenOrb_file, mage_file, killedMage_file, destructableObstacle_file, forceField_file;
+    public int quantityOfEnemies = 0;
 
     public virtual void LoadSprites()
     {
         
         floor_file = "";
         wall_file = "";
+        water_file = "";
+        tree_file = "";
         movableRock_file = "";
         hole_file = "";
         filledHole_file = "";
@@ -18,6 +21,6 @@ public class Level : MonoBehaviour
         mage_file = "";
         killedMage_file = "";
         destructableObstacle_file = "";
-
+        forceField_file = "";
     }
 }

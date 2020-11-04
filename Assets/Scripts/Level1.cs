@@ -12,29 +12,36 @@ public class Level1 : Level
     }
     public override void LoadSprites()
     {
-        floor_file = "Sprites/Grass";
-        wall_file = "Sprites/Wall";
+        floor_file = "Sprites/TileMap/Grass/grass_2_2";
+        wall_file = "Sprites/Objects/big_rock";
+        water_file = "Sprites/TileMap/Water/water_2_2";
+        tree_file = "Sprites/Objects/Tree";
         movableRock_file = "Sprites/Rock";
-        hole_file = "Sprites/Hole";
-        filledHole_file = "Sprites/FilledHole";
-        collectable_file = "Sprites/Collectable";
-        orb_file = "Sprites/Orb";
-        brokenOrb_file = "Sprites/BrokenOrb";
-        mage_file = "Sprites/Mage";
-        killedMage_file = "Sprites/KilledMage";
+        hole_file = "Sprites/Objects/Hole";
+        filledHole_file = "Sprites/Objects/FilledHole";
+        collectable_file = "Sprites/Objects/Collectable";
+        orb_file = "Sprites/Objects/Orb";
+        brokenOrb_file = "Sprites/Objects/BrokenOrb";
+        mage_file = "Sprites/Enemies/Mushroom";
+        killedMage_file = "Sprites/Objects/KilledMage";
         destructableObstacle_file = "Sprites/Rock";
+        forceField_file = "Sprites/ForceField";
+        quantityOfEnemies = 2;
     }
 
 
     void LoadPuzzle()
     {
+        LoadLevel.world = 1;
+        LoadLevel.level = 1;
+
         #region line 1
-        LV.pos[0][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
-        LV.pos[1][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
+        LV.pos[0][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Tree);
+        LV.pos[1][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
         LV.pos[2][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[3][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[4][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Collectable);
-        LV.pos[5][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
+        LV.pos[5][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Tree);
         LV.pos[6][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[7][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[8][0].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
@@ -42,12 +49,12 @@ public class Level1 : Level
         #endregion
 
         #region line 2
-        LV.pos[0][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
-        LV.pos[1][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
-        LV.pos[2][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
+        LV.pos[0][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
+        LV.pos[1][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
+        LV.pos[2][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
         LV.pos[3][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Hole);
-        LV.pos[4][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
-        LV.pos[5][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
+        LV.pos[4][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
+        LV.pos[5][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
         LV.pos[6][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[7][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
         LV.pos[8][1].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
@@ -55,7 +62,7 @@ public class Level1 : Level
         #endregion
 
         #region line 3
-        LV.pos[0][2].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
+        LV.pos[0][2].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
         LV.pos[1][2].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[2][2].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[3][2].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
@@ -68,7 +75,7 @@ public class Level1 : Level
         #endregion
 
         #region line 4
-        LV.pos[0][3].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
+        LV.pos[0][3].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Water);
         LV.pos[1][3].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
         LV.pos[2][3].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Wall);
         LV.pos[3][3].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Hole);
@@ -164,8 +171,9 @@ public class Level1 : Level
             {
                 if(LV.pos[i][f].GetComponent<BlockType>().type == BlockType.Type.Floor)
                 {
-                    //LV.pos[i][f].GetComponent<SpriteRenderer>().transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    LV.pos[i][f].GetComponent<SpriteRenderer>().sortingOrder = -1;
+                    LV.pos[i][f].GetComponent<SpriteRenderer>().transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                    
+                    LV.pos[i][f].GetComponent<SpriteRenderer>().sortingOrder = 0;
                 }
             }
         }

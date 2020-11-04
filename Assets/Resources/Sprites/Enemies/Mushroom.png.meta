@@ -1,0 +1,874 @@
+fileFormatVersion: 2
+guid: 5f32ba0da5387f74e81f89827e2b6aad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4165223088384051166
+    second: "Mushroom Anima\xE7\xE3o_0"
+  - first:
+      213: -6858723423226233399
+    second: "Mushroom Anima\xE7\xE3o_1"
+  - first:
+      213: -7904364305568154806
+    second: "Mushroom Anima\xE7\xE3o_2"
+  - first:
+      213: 524819348702893227
+    second: "Mushroom Anima\xE7\xE3o_3"
+  - first:
+      213: -5009179182383661217
+    second: "Mushroom Anima\xE7\xE3o_4"
+  - first:
+      213: 83780479346203167
+    second: "Mushroom Anima\xE7\xE3o_5"
+  - first:
+      213: -5061174590284717722
+    second: "Mushroom Anima\xE7\xE3o_6"
+  - first:
+      213: -6383385410628107839
+    second: "Mushroom Anima\xE7\xE3o_7"
+  - first:
+      213: 6118904874751042835
+    second: "Mushroom Anima\xE7\xE3o_8"
+  - first:
+      213: -2022247596604100339
+    second: "Mushroom Anima\xE7\xE3o_9"
+  - first:
+      213: -2315681817953173916
+    second: "Mushroom Anima\xE7\xE3o_10"
+  - first:
+      213: -4766830656392410218
+    second: "Mushroom Anima\xE7\xE3o_11"
+  - first:
+      213: 5917649392593149582
+    second: "Mushroom Anima\xE7\xE3o_12"
+  - first:
+      213: -1943193100505518133
+    second: "Mushroom Anima\xE7\xE3o_13"
+  - first:
+      213: -6337330918790465371
+    second: "Mushroom Anima\xE7\xE3o_14"
+  - first:
+      213: 4551053021278185995
+    second: "Mushroom Anima\xE7\xE3o_15"
+  - first:
+      213: 2008061286148706638
+    second: "Mushroom Anima\xE7\xE3o_16"
+  - first:
+      213: -7384438827216021905
+    second: "Mushroom Anima\xE7\xE3o_17"
+  - first:
+      213: 579204279241520356
+    second: "Mushroom Anima\xE7\xE3o_18"
+  - first:
+      213: 6145946587477671643
+    second: "Mushroom Anima\xE7\xE3o_19"
+  - first:
+      213: 2648830411707942878
+    second: "Mushroom Anima\xE7\xE3o_20"
+  - first:
+      213: -8591738015939019415
+    second: "Mushroom Anima\xE7\xE3o_21"
+  - first:
+      213: 1929450281419107289
+    second: "Mushroom Anima\xE7\xE3o_22"
+  - first:
+      213: -4614047851937539505
+    second: "Mushroom Anima\xE7\xE3o_23"
+  - first:
+      213: -5941960369348392540
+    second: "Mushroom Anima\xE7\xE3o_24"
+  - first:
+      213: -2537353340968937687
+    second: "Mushroom Anima\xE7\xE3o_25"
+  - first:
+      213: 63480559404314888
+    second: "Mushroom Anima\xE7\xE3o_26"
+  - first:
+      213: -368421860107203372
+    second: "Mushroom Anima\xE7\xE3o_27"
+  - first:
+      213: 6297923381729930499
+    second: "Mushroom Anima\xE7\xE3o_28"
+  - first:
+      213: 6687013770916939277
+    second: "Mushroom Anima\xE7\xE3o_29"
+  - first:
+      213: 4235928059634643095
+    second: "Mushroom Anima\xE7\xE3o_30"
+  - first:
+      213: 5974956683343401541
+    second: "Mushroom Anima\xE7\xE3o_31"
+  - first:
+      213: 5138938792953412789
+    second: "Mushroom Anima\xE7\xE3o_32"
+  - first:
+      213: 11052772932731439
+    second: "Mushroom Anima\xE7\xE3o_33"
+  - first:
+      213: 3600365278040691661
+    second: "Mushroom Anima\xE7\xE3o_34"
+  - first:
+      213: -5588095099733167526
+    second: "Mushroom Anima\xE7\xE3o_35"
+  - first:
+      213: -2216190711467265333
+    second: "Mushroom Anima\xE7\xE3o_36"
+  - first:
+      213: 5130274402026901602
+    second: "Mushroom Anima\xE7\xE3o_37"
+  - first:
+      213: -5559423924887191574
+    second: "Mushroom Anima\xE7\xE3o_38"
+  - first:
+      213: 1953328944119255547
+    second: "Mushroom Anima\xE7\xE3o_39"
+  - first:
+      213: 960823355208648109
+    second: "Mushroom Anima\xE7\xE3o_40"
+  - first:
+      213: 2158155434260616023
+    second: "Mushroom Anima\xE7\xE3o_41"
+  - first:
+      213: 1506562494857669219
+    second: "Mushroom Anima\xE7\xE3o_42"
+  - first:
+      213: -6721419064380118690
+    second: "Mushroom Anima\xE7\xE3o_43"
+  - first:
+      213: 6652940661664698597
+    second: "Mushroom Anima\xE7\xE3o_44"
+  - first:
+      213: 5565781894106378195
+    second: "Mushroom Anima\xE7\xE3o_45"
+  - first:
+      213: 7233665558264126030
+    second: "Mushroom Anima\xE7\xE3o_46"
+  - first:
+      213: -1947873702563144187
+    second: "Mushroom Anima\xE7\xE3o_47"
+  - first:
+      213: 2848221550694698562
+    second: "Mushroom Anima\xE7\xE3o_48"
+  - first:
+      213: -6906383322978805122
+    second: "Mushroom Anima\xE7\xE3o_49"
+  - first:
+      213: -3510525132442049680
+    second: "Mushroom Anima\xE7\xE3o_50"
+  - first:
+      213: -6171494922672813587
+    second: "Mushroom Anima\xE7\xE3o_51"
+  - first:
+      213: 1648332448374274111
+    second: "Mushroom Anima\xE7\xE3o_52"
+  - first:
+      213: 6250217626500999675
+    second: "Mushroom Anima\xE7\xE3o_53"
+  - first:
+      213: 329731866189668906
+    second: "Mushroom Anima\xE7\xE3o_54"
+  - first:
+      213: 1183381356558582180
+    second: "Mushroom Anima\xE7\xE3o_55"
+  - first:
+      213: 4656984713526392363
+    second: "Mushroom Anima\xE7\xE3o_56"
+  - first:
+      213: -2143706397732687685
+    second: "Mushroom Anima\xE7\xE3o_57"
+  - first:
+      213: 558777834072579368
+    second: "Mushroom Anima\xE7\xE3o_58"
+  - first:
+      213: -49706056538838138
+    second: "Mushroom Anima\xE7\xE3o_59"
+  - first:
+      213: -7295108813575385570
+    second: "Mushroom Anima\xE7\xE3o_60"
+  - first:
+      213: -6873144697319895005
+    second: "Mushroom Anima\xE7\xE3o_61"
+  - first:
+      213: -8528563642954000852
+    second: "Mushroom Anima\xE7\xE3o_62"
+  - first:
+      213: -7406770849265950599
+    second: "Mushroom Anima\xE7\xE3o_63"
+  - first:
+      213: -102302034174208459
+    second: "Mushroom Anima\xE7\xE3o_64"
+  - first:
+      213: 1385754467678626106
+    second: "Mushroom Anima\xE7\xE3o_65"
+  - first:
+      213: -3190372225534329528
+    second: "Mushroom Anima\xE7\xE3o_66"
+  - first:
+      213: 1540418152685791180
+    second: "Mushroom Anima\xE7\xE3o_67"
+  - first:
+      213: -8269317977588926569
+    second: "Mushroom Anima\xE7\xE3o_68"
+  - first:
+      213: 3331746501705441611
+    second: "Mushroom Anima\xE7\xE3o_69"
+  - first:
+      213: 8240753558045125007
+    second: "Mushroom Anima\xE7\xE3o_70"
+  - first:
+      213: -7167922118501983095
+    second: "Mushroom Anima\xE7\xE3o_71"
+  - first:
+      213: 6743262995863063137
+    second: "Mushroom Anima\xE7\xE3o_72"
+  - first:
+      213: 164012759567780166
+    second: "Mushroom Anima\xE7\xE3o_73"
+  - first:
+      213: -4248724016998563659
+    second: "Mushroom Anima\xE7\xE3o_74"
+  - first:
+      213: 3414013425449606272
+    second: "Mushroom Anima\xE7\xE3o_75"
+  - first:
+      213: 4079270094369750028
+    second: "Mushroom Anima\xE7\xE3o_76"
+  - first:
+      213: 5891240863634629537
+    second: "Mushroom Anima\xE7\xE3o_77"
+  - first:
+      213: -5002382127939347465
+    second: "Mushroom Anima\xE7\xE3o_78"
+  - first:
+      213: -1296603899688056612
+    second: "Mushroom Anima\xE7\xE3o_79"
+  - first:
+      213: -3616090004194511644
+    second: "Mushroom Anima\xE7\xE3o_80"
+  - first:
+      213: -8292317671672379693
+    second: "Mushroom Anima\xE7\xE3o_81"
+  - first:
+      213: -6895037190796711371
+    second: "Mushroom Anima\xE7\xE3o_82"
+  - first:
+      213: -8163447381217484884
+    second: "Mushroom Anima\xE7\xE3o_83"
+  - first:
+      213: -6093864174498899779
+    second: "Mushroom Anima\xE7\xE3o_84"
+  - first:
+      213: 3614773142652477088
+    second: "Mushroom Anima\xE7\xE3o_85"
+  - first:
+      213: 6365780083414015040
+    second: "Mushroom Anima\xE7\xE3o_86"
+  - first:
+      213: -7219651612295609897
+    second: "Mushroom Anima\xE7\xE3o_87"
+  - first:
+      213: -7912639293047235589
+    second: "Mushroom Anima\xE7\xE3o_88"
+  - first:
+      213: -2241611999352527822
+    second: "Mushroom Anima\xE7\xE3o_89"
+  - first:
+      213: 3143723178464346452
+    second: "Mushroom Anima\xE7\xE3o_90"
+  - first:
+      213: -3425137008346237826
+    second: "Mushroom Anima\xE7\xE3o_91"
+  - first:
+      213: -580890451572782419
+    second: "Mushroom Anima\xE7\xE3o_92"
+  - first:
+      213: 4361139835534918611
+    second: "Mushroom Anima\xE7\xE3o_93"
+  - first:
+      213: 9152919356058182654
+    second: "Mushroom Anima\xE7\xE3o_94"
+  - first:
+      213: 3932186023600373534
+    second: "Mushroom Anima\xE7\xE3o_95"
+  - first:
+      213: -5012418821742884599
+    second: "Mushroom Anima\xE7\xE3o_96"
+  - first:
+      213: -1312586596491186988
+    second: "Mushroom Anima\xE7\xE3o_97"
+  - first:
+      213: -3293489438303957726
+    second: "Mushroom Anima\xE7\xE3o_98"
+  - first:
+      213: 7567763714214325258
+    second: "Mushroom Anima\xE7\xE3o_99"
+  - first:
+      213: 4958316370148190450
+    second: "Mushroom Anima\xE7\xE3o_100"
+  - first:
+      213: 7340775006859703225
+    second: "Mushroom Anima\xE7\xE3o_101"
+  - first:
+      213: 7851252593659636626
+    second: "Mushroom Anima\xE7\xE3o_102"
+  - first:
+      213: 8840463976801375745
+    second: "Mushroom Anima\xE7\xE3o_103"
+  - first:
+      213: 1497763348501488098
+    second: "Mushroom Anima\xE7\xE3o_104"
+  - first:
+      213: 7579374924846860005
+    second: "Mushroom Anima\xE7\xE3o_105"
+  - first:
+      213: 4531005584425012378
+    second: "Mushroom Anima\xE7\xE3o_106"
+  - first:
+      213: 2094548867328841519
+    second: "Mushroom Anima\xE7\xE3o_107"
+  - first:
+      213: 1130019401140886398
+    second: "Mushroom Anima\xE7\xE3o_108"
+  - first:
+      213: -8567121013174042871
+    second: "Mushroom Anima\xE7\xE3o_109"
+  - first:
+      213: -9067504395787427935
+    second: "Mushroom Anima\xE7\xE3o_110"
+  - first:
+      213: 1180475974271755673
+    second: "Mushroom Anima\xE7\xE3o_111"
+  - first:
+      213: 6321341687685250354
+    second: "Mushroom Anima\xE7\xE3o_112"
+  - first:
+      213: -1725796224344494330
+    second: "Mushroom Anima\xE7\xE3o_113"
+  - first:
+      213: 8623653340947009654
+    second: "Mushroom Anima\xE7\xE3o_114"
+  - first:
+      213: -1595734033586993472
+    second: "Mushroom Anima\xE7\xE3o_115"
+  - first:
+      213: -1279478323105884465
+    second: "Mushroom Anima\xE7\xE3o_116"
+  - first:
+      213: 6228509455085479956
+    second: "Mushroom Anima\xE7\xE3o_117"
+  - first:
+      213: 4498526802946514768
+    second: "Mushroom Anima\xE7\xE3o_118"
+  - first:
+      213: 4519861136406740147
+    second: "Mushroom Anima\xE7\xE3o_119"
+  - first:
+      213: 4166037892628788451
+    second: "Mushroom Anima\xE7\xE3o_120"
+  - first:
+      213: -124175949847638211
+    second: "Mushroom Anima\xE7\xE3o_121"
+  - first:
+      213: 8263891819226705550
+    second: "Mushroom Anima\xE7\xE3o_122"
+  - first:
+      213: 4664852538934266229
+    second: "Mushroom Anima\xE7\xE3o_123"
+  - first:
+      213: -1468806266868325287
+    second: "Mushroom Anima\xE7\xE3o_124"
+  - first:
+      213: -4477623778418294107
+    second: "Mushroom Anima\xE7\xE3o_125"
+  - first:
+      213: -1498898791487783660
+    second: "Mushroom Anima\xE7\xE3o_126"
+  - first:
+      213: 3867584747919754015
+    second: "Mushroom Anima\xE7\xE3o_127"
+  - first:
+      213: 6487569405785859562
+    second: "Mushroom Anima\xE7\xE3o_128"
+  - first:
+      213: -2234349502946055061
+    second: "Mushroom Anima\xE7\xE3o_129"
+  - first:
+      213: -7508686734306142225
+    second: "Mushroom Anima\xE7\xE3o_130"
+  - first:
+      213: -7309339517413606146
+    second: "Mushroom Anima\xE7\xE3o_131"
+  - first:
+      213: 8097565837298816585
+    second: "Mushroom Anima\xE7\xE3o_132"
+  - first:
+      213: -997301983654986731
+    second: "Mushroom Anima\xE7\xE3o_133"
+  - first:
+      213: 6105314764612120824
+    second: "Mushroom Anima\xE7\xE3o_134"
+  - first:
+      213: 1426968885862563457
+    second: "Mushroom Anima\xE7\xE3o_135"
+  - first:
+      213: -4789385367884100983
+    second: "Mushroom Anima\xE7\xE3o_136"
+  - first:
+      213: -91697922820352935
+    second: "Mushroom Anima\xE7\xE3o_137"
+  - first:
+      213: -6725079064046626225
+    second: "Mushroom Anima\xE7\xE3o_138"
+  - first:
+      213: 7418254145304487465
+    second: "Mushroom Anima\xE7\xE3o_139"
+  - first:
+      213: -8753200477198375465
+    second: "Mushroom Anima\xE7\xE3o_140"
+  - first:
+      213: 405580907091470403
+    second: "Mushroom Anima\xE7\xE3o_141"
+  - first:
+      213: -6163761362945630766
+    second: "Mushroom Anima\xE7\xE3o_142"
+  - first:
+      213: 9109656051971321470
+    second: "Mushroom Anima\xE7\xE3o_143"
+  - first:
+      213: -4341164653071285937
+    second: "Mushroom Anima\xE7\xE3o_144"
+  - first:
+      213: -7572169134796695919
+    second: "Mushroom Anima\xE7\xE3o_145"
+  - first:
+      213: -8943900675554182654
+    second: "Mushroom Anima\xE7\xE3o_146"
+  - first:
+      213: -6843139669370166977
+    second: "Mushroom Anima\xE7\xE3o_147"
+  - first:
+      213: 5853641237413686692
+    second: "Mushroom Anima\xE7\xE3o_148"
+  - first:
+      213: -2299775171813901957
+    second: "Mushroom Anima\xE7\xE3o_149"
+  - first:
+      213: -3107751671366662027
+    second: "Mushroom Anima\xE7\xE3o_150"
+  - first:
+      213: 7459255077102881118
+    second: "Mushroom Anima\xE7\xE3o_151"
+  - first:
+      213: -8761276463198563537
+    second: "Mushroom Anima\xE7\xE3o_152"
+  - first:
+      213: -4158944262593111432
+    second: "Mushroom Anima\xE7\xE3o_153"
+  - first:
+      213: 1756454164041090821
+    second: "Mushroom Anima\xE7\xE3o_154"
+  - first:
+      213: -6911568608109067884
+    second: "Mushroom Anima\xE7\xE3o_155"
+  - first:
+      213: 5760825579813337041
+    second: "Mushroom Anima\xE7\xE3o_156"
+  - first:
+      213: 2767646406677900138
+    second: "Mushroom Anima\xE7\xE3o_157"
+  - first:
+      213: 7430687220570750733
+    second: "Mushroom Anima\xE7\xE3o_158"
+  - first:
+      213: 4948162341081827246
+    second: "Mushroom Anima\xE7\xE3o_159"
+  - first:
+      213: 1137726874059055296
+    second: "Mushroom Anima\xE7\xE3o_160"
+  - first:
+      213: -2975453657652082104
+    second: "Mushroom Anima\xE7\xE3o_161"
+  - first:
+      213: -8440380162613787480
+    second: "Mushroom Anima\xE7\xE3o_162"
+  - first:
+      213: 5348905687953405350
+    second: "Mushroom Anima\xE7\xE3o_163"
+  - first:
+      213: -5407141129443996358
+    second: "Mushroom Anima\xE7\xE3o_164"
+  - first:
+      213: -9092107657567294665
+    second: "Mushroom Anima\xE7\xE3o_165"
+  - first:
+      213: -4291870509358571581
+    second: "Mushroom Anima\xE7\xE3o_166"
+  - first:
+      213: -8417418592025330533
+    second: "Mushroom Anima\xE7\xE3o_167"
+  - first:
+      213: -5920809096307496748
+    second: "Mushroom Anima\xE7\xE3o_168"
+  - first:
+      213: -6871248990102865873
+    second: "Mushroom Anima\xE7\xE3o_169"
+  - first:
+      213: -6001980818035076682
+    second: "Mushroom Anima\xE7\xE3o_170"
+  - first:
+      213: -1995190678745962570
+    second: "Mushroom Anima\xE7\xE3o_171"
+  - first:
+      213: -8264244214047700585
+    second: "Mushroom Anima\xE7\xE3o_172"
+  - first:
+      213: -2703246537657193581
+    second: "Mushroom Anima\xE7\xE3o_173"
+  - first:
+      213: -427661630687399124
+    second: "Mushroom Anima\xE7\xE3o_174"
+  - first:
+      213: 6198004077344611966
+    second: "Mushroom Anima\xE7\xE3o_175"
+  - first:
+      213: 5638923676456873439
+    second: "Mushroom Anima\xE7\xE3o_176"
+  - first:
+      213: 7488617550305114381
+    second: "Mushroom Anima\xE7\xE3o_177"
+  - first:
+      213: 6668791925611476509
+    second: "Mushroom Anima\xE7\xE3o_178"
+  - first:
+      213: 6183174125997233160
+    second: "Mushroom Anima\xE7\xE3o_179"
+  - first:
+      213: 5875117709200149413
+    second: "Mushroom Anima\xE7\xE3o_180"
+  - first:
+      213: -6334136193427223075
+    second: "Mushroom Anima\xE7\xE3o_181"
+  - first:
+      213: 5058665125335351877
+    second: "Mushroom Anima\xE7\xE3o_182"
+  - first:
+      213: -2455328156725547423
+    second: "Mushroom Anima\xE7\xE3o_183"
+  - first:
+      213: -3908708487774066161
+    second: "Mushroom Anima\xE7\xE3o_184"
+  - first:
+      213: -4652624273279268995
+    second: "Mushroom Anima\xE7\xE3o_185"
+  - first:
+      213: 2844710187372595028
+    second: "Mushroom Anima\xE7\xE3o_186"
+  - first:
+      213: -7400320603029266368
+    second: "Mushroom Anima\xE7\xE3o_187"
+  - first:
+      213: 1747811918097004908
+    second: "Mushroom Anima\xE7\xE3o_188"
+  - first:
+      213: 459753869562761196
+    second: "Mushroom Anima\xE7\xE3o_189"
+  - first:
+      213: 1613057462993434275
+    second: "Mushroom Anima\xE7\xE3o_190"
+  - first:
+      213: -4178030415580389076
+    second: "Mushroom Anima\xE7\xE3o_191"
+  - first:
+      213: -6985635043813920959
+    second: "Mushroom Anima\xE7\xE3o_192"
+  - first:
+      213: -5056448628757252083
+    second: "Mushroom Anima\xE7\xE3o_193"
+  - first:
+      213: 5106473808883673552
+    second: "Mushroom Anima\xE7\xE3o_194"
+  - first:
+      213: 6680030564716387460
+    second: "Mushroom Anima\xE7\xE3o_195"
+  - first:
+      213: 3516449225450913151
+    second: "Mushroom Anima\xE7\xE3o_196"
+  - first:
+      213: 7998805138955533856
+    second: "Mushroom Anima\xE7\xE3o_197"
+  - first:
+      213: -5126874712955215926
+    second: "Mushroom Anima\xE7\xE3o_198"
+  - first:
+      213: -1188245226974377398
+    second: "Mushroom Anima\xE7\xE3o_199"
+  - first:
+      213: 4853131401263404552
+    second: "Mushroom Anima\xE7\xE3o_200"
+  - first:
+      213: -5956914284084255607
+    second: "Mushroom Anima\xE7\xE3o_201"
+  - first:
+      213: 1531408424480153878
+    second: "Mushroom Anima\xE7\xE3o_202"
+  - first:
+      213: -2609934633175968457
+    second: "Mushroom Anima\xE7\xE3o_203"
+  - first:
+      213: 8164118878343946420
+    second: "Mushroom Anima\xE7\xE3o_204"
+  - first:
+      213: 8530469700830741241
+    second: "Mushroom Anima\xE7\xE3o_205"
+  - first:
+      213: 8700344161831634533
+    second: "Mushroom Anima\xE7\xE3o_206"
+  - first:
+      213: 942040467652583429
+    second: "Mushroom Anima\xE7\xE3o_207"
+  - first:
+      213: 8170899142171895347
+    second: "Mushroom Anima\xE7\xE3o_208"
+  - first:
+      213: -4985903919223770620
+    second: "Mushroom Anima\xE7\xE3o_209"
+  - first:
+      213: 1893742866264555020
+    second: "Mushroom Anima\xE7\xE3o_210"
+  - first:
+      213: -6576295141886906330
+    second: "Mushroom Anima\xE7\xE3o_211"
+  - first:
+      213: 7395034003277291542
+    second: "Mushroom Anima\xE7\xE3o_212"
+  - first:
+      213: 7806743845681374527
+    second: "Mushroom Anima\xE7\xE3o_213"
+  - first:
+      213: 4133887530247809997
+    second: "Mushroom Anima\xE7\xE3o_214"
+  - first:
+      213: 2446697996756876529
+    second: "Mushroom Anima\xE7\xE3o_215"
+  - first:
+      213: -4471142048554451791
+    second: "Mushroom Anima\xE7\xE3o_216"
+  - first:
+      213: -2338188774060990206
+    second: "Mushroom Anima\xE7\xE3o_217"
+  - first:
+      213: 4727708029962869705
+    second: "Mushroom Anima\xE7\xE3o_218"
+  - first:
+      213: -2657193544480423503
+    second: "Mushroom Anima\xE7\xE3o_219"
+  - first:
+      213: 8263140686992098526
+    second: "Mushroom Anima\xE7\xE3o_220"
+  - first:
+      213: -7949552028879726576
+    second: "Mushroom Anima\xE7\xE3o_221"
+  - first:
+      213: -7306756073345501739
+    second: "Mushroom Anima\xE7\xE3o_222"
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Mushroom Anima\xE7\xE3o_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 595
+        height: 728
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed70361a458ddc930800000000000000
+      internalID: 4165223088384051166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Mushroom Anima\xE7\xE3o_1"
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 0
+        width: 595
+        height: 728
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cdf2f9b26be0d0a0800000000000000
+      internalID: -6858723423226233399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Mushroom Anima\xE7\xE3o_2"
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 0
+        width: 595
+        height: 728
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b355f0b8e0e4290800000000000000
+      internalID: -7904364305568154806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

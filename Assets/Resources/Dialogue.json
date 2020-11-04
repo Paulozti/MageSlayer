@@ -1,0 +1,65 @@
+{
+	"chapters": 
+	[
+		{
+			"level": 1,
+			"phrases": 
+			[
+				"Player:oi",
+				"Inimigo:oiê",
+				"Player:Ovô te mata",
+				"Inimigo:tá bom"
+			]
+		},
+		{
+			"level": 2,
+			"phrases": 
+			[
+				"Player:oi",
+				"Inimigo:oiê",
+				"Player:Bora morrer?",
+				"Inimigo:Bora"
+			]
+		},
+		{
+			"level": 3,
+			"phrases": 
+			[
+				"Player:",
+				"Inimigo:"
+			]
+		},
+		{
+			"level": 4,
+			"phrases": 
+			[
+				"Player:",
+				"Inimigo:"
+			]
+		},
+		{
+			"level": 5,
+			"phrases": 
+			[
+				"Player:",
+				"Inimigo:"
+			]
+		},
+		{
+			"level": 6,
+			"phrases": 
+			[
+				"Player:",
+				"Inimigo:"
+			]
+		},
+		{
+			"level": 7,
+			"phrases": 
+			[
+				"Player:",
+				"Inimigo:"
+			]
+		}
+	]
+}
