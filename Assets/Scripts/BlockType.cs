@@ -32,13 +32,19 @@ public class BlockType : MonoBehaviour
     public bool isFilledHole = false;
     public bool isCollectable = false;
 
+    public string floorTile = "";
+    public string waterTile = "";
+
     private void Awake()
     {
         loadedLevel = GameObject.Find("LevelManager").GetComponent<Level>();
     }
 
-    public void ObstacleTakeDamage()
+    public void ObstacleTakeDamage(bool orbIsDestroyed)
     {
+        if (type == Type.Mage && !orbIsDestroyed)
+            return;
+
         life--;
 
         if(life <= 0)
@@ -51,9 +57,13 @@ public class BlockType : MonoBehaviour
                     break;
                 case Type.Orb:
                     ChangeBlockType(Type.BrokenOrb);
+                    loadedLevel.gameObject.GetComponent<LoadLevel>().orbDestroyed = true;
                     break;
                 case Type.Mage:
                     ChangeBlockType(Type.KilledMage);
+                    loadedLevel.quantityOfEnemiesInAlive--;
+                    if (loadedLevel.quantityOfEnemiesInAlive <= 0)
+                        loadedLevel.gameObject.GetComponent<LoadLevel>().didPlayerWin = true;
                     break;
             }
         }
@@ -67,17 +77,18 @@ public class BlockType : MonoBehaviour
                 if (isFilledHole)
                 {
                     this.type = Type.FilledHole;
-                    GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.filledHole_file);
+                    CheckFloorTile();
                 }
                 else if (isCollectable)
                 {
                     isCollectable = false;
+                    loadedLevel.GetComponent<LoadLevel>().gotCollectable = true;
                     Destroy(transform.GetChild(0).gameObject);
                 }
                 else
                 {
                     this.type = Type.Floor;
-                    GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                    CheckFloorTile();
                 }
                 canWalk = true;
                 canBeAttacked = false;
@@ -86,17 +97,17 @@ public class BlockType : MonoBehaviour
                 break;
             case Type.Wall:
                 this.type = Type.Wall;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = false;
                 transform.name = "Wall";
-                InstantiateObject("BigRock", loadedLevel.wall_file, new Vector3(1,1,1), this.transform.position);
+                InstantiateObject("BigRock", loadedLevel.wall_file, new Vector3(1,1,1), this.transform.position, false, false);
                 transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.Water:
                 this.type = Type.Water;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.water_file);
+                CheckWaterTile();
                 canWalk = false;
                 canBeAttacked = false;
                 transform.name = "Water";
@@ -104,41 +115,46 @@ public class BlockType : MonoBehaviour
                 break;
             case Type.Tree:
                 this.type = Type.Tree;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = false;
                 transform.name = "TreeFloor";
-                InstantiateObject("Tree", loadedLevel.tree_file, new Vector3(1f, 1f, 1f), this.transform.position + new Vector3(0f,0.7f,0f));
+                InstantiateObject("Tree", loadedLevel.tree_file, new Vector3(1f, 1f, 1f), this.transform.position + new Vector3(0f,0.7f,0f), false, false);
+                transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.MovableRock:
                 this.type = Type.MovableRock;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.movableRock_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = false;
-                transform.name = "MovableRock";
+                transform.name = "MovableRockFloor";
+                InstantiateObject("MovableRock", loadedLevel.movableRock_file, new Vector3(1, 1, 1), this.transform.position, false, false);
+                transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 GetComponent<SpriteRenderer>().sortingOrder = 2;
                 break;
             case Type.MovableRockOnFilledHole:
                 this.type = Type.MovableRockOnFilledHole;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.movableRock_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = false;
                 transform.name = "MovableRockOnFilledHole";
+                InstantiateObject("MovableRock", loadedLevel.movableRock_file, new Vector3(1, 1, 1), this.transform.position, false, false);
+                transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 GetComponent<SpriteRenderer>().sortingOrder = 2;
                 break;
             case Type.Hole:
                 this.type = Type.Hole;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = false;
                 transform.name = "HoleFloor";
-                InstantiateObject("Hole", loadedLevel.hole_file, new Vector3(1f, 1f, 1f), this.transform.position);
+                InstantiateObject("Hole", loadedLevel.hole_file, new Vector3(1f, 1f, 1f), this.transform.position, false, false);
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.FilledHole:
                 this.type = Type.FilledHole;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = true;
                 canBeAttacked = false;
                 transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.filledHole_file);
@@ -147,53 +163,53 @@ public class BlockType : MonoBehaviour
             case Type.Collectable:
                 this.type = Type.Collectable;
                 isCollectable = true;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = true;
                 canBeAttacked = false;
                 transform.name = "CollectableFloor";
-                InstantiateObject("Collectable", loadedLevel.collectable_file, new Vector3(0.5f, 0.5f, 0.5f), this.transform.position);
+                InstantiateObject("Collectable", loadedLevel.collectable_file, new Vector3(0.5f, 0.5f, 0.5f), this.transform.position, false, false);
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.Orb:
                 this.type = Type.Orb;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = true;
                 transform.name = "OrbFloor";
-                InstantiateObject("Orb", loadedLevel.orb_file, new Vector3(0.5f, 0.5f, 0.5f), this.transform.position);
+                InstantiateObject("Orb", loadedLevel.orb_file, new Vector3(0.5f, 0.5f, 0.5f), this.transform.position, false, false);
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.BrokenOrb:
                 this.type = Type.BrokenOrb;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = true;
                 canBeAttacked = false;
                 transform.name = "OrbFloor";
                 transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.brokenOrb_file);
-                Debug.Log(loadedLevel.quantityOfEnemies);
-                while(loadedLevel.quantityOfEnemies > 0)
+                while(loadedLevel.quantityOfEnemiesWithShield > 0)
                 {
-                    Destroy(GameObject.Find("ForceField"));
-                    loadedLevel.quantityOfEnemies--;
+                    Destroy(GameObject.Find("ForceField"+ loadedLevel.quantityOfEnemiesWithShield));
+                    loadedLevel.quantityOfEnemiesWithShield--;
                 }
                     
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.Mage:
                 this.type = Type.Mage;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = true;
                 transform.name = "MageFloor";
-                InstantiateObject("Mage", loadedLevel.mage_file, new Vector3(0.4f, 0.4f, 0.4f), this.transform.position + new Vector3(0,0.5f,0));
-                InstantiateObject("ForceField", loadedLevel.forceField_file, new Vector3(0.5f, 0.5f, 0.5f), this.transform.position + new Vector3(0, 0.5f, 0));
+                InstantiateObject("Mage", loadedLevel.mage_file, new Vector3(0.4f, 0.4f, 0.4f), this.transform.position + new Vector3(0,0.5f,0), loadedLevel.elite, loadedLevel.boss);
+                loadedLevel.createdForceFields++;
+                InstantiateObject("ForceField"+loadedLevel.createdForceFields, loadedLevel.forceField_file, new Vector3(0.5f, 0.5f, 0.5f), this.transform.position + new Vector3(0, 0.5f, 0), false, false);
                 transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
-                transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
                 GetComponent<SpriteRenderer>().sortingOrder = 0;
                 break;
             case Type.KilledMage:
                 this.type = Type.KilledMage;
-                GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+                CheckFloorTile();
                 canWalk = false;
                 canBeAttacked = false;
                 transform.name = "MageFloor";
@@ -214,13 +230,41 @@ public class BlockType : MonoBehaviour
         GetComponent<SpriteRenderer>().transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
-    private void InstantiateObject(string name, string file, Vector3 scale, Vector3 position)
+    private void InstantiateObject(string name, string file, Vector3 scale, Vector3 position, bool elite, bool boss)
     {
-        GameObject newObject = Instantiate(Resources.Load<GameObject>("Prefabs/Object"));
+        GameObject newObject;
+        if (boss)
+        {
+            newObject = Instantiate(Resources.Load<GameObject>("Prefabs/Boss"));
+        }
+        else if (elite)
+        {
+            scale = new Vector3(0.45f, 0.45f, 0.45f);
+            newObject = Instantiate(Resources.Load<GameObject>("Prefabs/Mage"));
+        }
+        else
+            newObject = Instantiate(Resources.Load<GameObject>("Prefabs/Object"));
+
         newObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(file);
         newObject.transform.position = position;
         newObject.name = name;
         newObject.transform.SetParent(this.transform);
         newObject.transform.localScale = scale;
+    }
+
+    private void CheckFloorTile()
+    {
+        if(floorTile == "")
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.floor_file);
+        else
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/TileMap/Grass/" + floorTile);
+    }
+
+    private void CheckWaterTile()
+    {
+        if (waterTile == "")
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(loadedLevel.water_file);
+        else
+            GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/TileMap/Water/" + waterTile);
     }
 }

@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public delegate void PlayerMoved();
     public static event PlayerMoved onPlayerMove;
 
+    [SerializeField] private Animator PlayerAnimation;
+
     void Start()
     {
         LV = GameObject.Find("LevelManager").GetComponent<LoadLevel>();
@@ -115,17 +117,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveToPosition(Vector3 initialPosition, Vector3 destination)
     {
+        PlayerAnimation.SetTrigger("Move");
         transform.position = Vector2.MoveTowards(initialPosition, destination, 1);
-        //onPlayerMove?.Invoke();
-
-        try
-        {
-            onPlayerMove();
-        }
-        catch(Exception e)
-        {
-            Debug.LogError(e);
-        }
+        onPlayerMove?.Invoke();
     }
 
 }

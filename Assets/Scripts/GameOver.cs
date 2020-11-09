@@ -5,6 +5,6 @@ public class GameOver : MonoBehaviour
 {
     public void TryAgain()
     {
-        SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 }

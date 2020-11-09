@@ -1,5 +1,6 @@
 ﻿using Cinemachine;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,12 +18,16 @@ public class LoadLevel : MonoBehaviour
     public static int world = 0, level = 0;
     public bool orbDestroyed = false;
     public bool didPlayerWin = false;
+    public bool gotCollectable = false;
     public DialogueManager dialogueManager;
     private bool waitingForReset = false;
     private Text actionPointsText, worldText, levelText;
-    private GameObject pauseDarkening, pauseBanner;
-    private bool canInteract = false, continueButtonAvailable = false;
-    
+    private GameObject pauseDarkening, pauseBanner, collectable, nextLevelButton;
+    private bool canInteract = false, continueButtonAvailable = false, gameEnded = false;
+    public static bool bossLevel = false;
+    public bool gameStarted = false;
+
+
     [SerializeField] private GameObject blockPrefab;
     //array of arrays 10x10
     public GameObject[][] pos = new GameObject[10][] {new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], new GameObject[10], }; 
@@ -32,6 +37,10 @@ public class LoadLevel : MonoBehaviour
     {
         pauseDarkening = GameObject.Find("PauseDark");
         pauseBanner = GameObject.Find("Pause");
+        collectable = GameObject.Find("EndCollectable");
+        collectable.SetActive(false);
+        nextLevelButton = GameObject.Find("NextLevelButton");
+        nextLevelButton.SetActive(false);
         pauseDarkening.SetActive(false);
         pauseBanner.SetActive(false);
         GameObject map = new GameObject();
@@ -52,6 +61,7 @@ public class LoadLevel : MonoBehaviour
         onBoardLoaded?.Invoke();
         PlayerMovement.onPlayerMove += UpdateGame;
         PlayerAttack.onPlayerAttack += UpdateGame;
+        dialogueManager.level = level;
         dialogueManager.StartDialog();
     }
 
@@ -77,22 +87,65 @@ public class LoadLevel : MonoBehaviour
 
     private void UpdateGame()
     {
+        if (bossLevel)
+        {
+            if (didPlayerWin)
+            {
+
+            }
+            else
+            {
+                return;
+            }
+        }
         actionPoints--;
         actionPointsText.text = actionPoints.ToString();
         if (didPlayerWin)
         {
-            SceneManager.LoadScene(2);
+            Win();
         }
         else if(actionPoints <= 0)
         {
-            waitingForReset = true;
-            continueButtonAvailable = true;
-            StartCoroutine(ResetGame());
+            LoseGame();
         }
+    }
+
+    public void Win()
+    {
+        StartCoroutine(EndGame());
+    }
+
+    IEnumerator EndGame()
+    {
+        canPlay = false;
+        LeanTween.moveX(transiction_left, 4.020003f, 1f);
+        LeanTween.moveX(transiction_right, 4.020003f, 1f);
+        StartCoroutine(ZoonOut());
+        yield return new WaitForSeconds(1f);
+        pauseBanner.SetActive(true);
+        pause.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Victory");
+        LeanTween.moveY(pause, -0.2f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        collectable.SetActive(true);
+        if (gotCollectable)
+        {
+            LeanTween.alpha(collectable, 1f, 0.5f);
+            LeanTween.rotate(collectable, new Vector3(0, 0, 0), 0.5f);
+        }
+        else
+        {
+            LeanTween.rotate(collectable, new Vector3(0, 0, 0), 0f);
+            collectable.GetComponent<SpriteRenderer>().color = Color.black;
+            LeanTween.alpha(collectable, 1f, 0.5f);
+        }
+        gameEnded = true;
+        canInteract = true;
+        nextLevelButton.SetActive(true);
     }
 
     public void StartGame()
     {
+        gameStarted = true;
         StartCoroutine(ZoonIn());
         LeanTween.moveX(transiction_left, -12.03f, 1f);
         LeanTween.moveX(transiction_right, 20.30f, 1f);
@@ -112,9 +165,16 @@ public class LoadLevel : MonoBehaviour
         actionPointsText = GameObject.Find("ActionPointsText").GetComponent<Text>();
         worldText = GameObject.Find("WorldText").GetComponent<Text>();
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
+        if (bossLevel)
+        {
+            actionPointsText.text = "";
+        }
+        else
+        {
+            actionPointsText.text = actionPoints.ToString();
+        }
         worldText.text = world.ToString();
         levelText.text = level.ToString();
-        actionPointsText.text = actionPoints.ToString();
         yield return new WaitForSeconds(1.5f);
         canPlay = true;
         canInteract = true;
@@ -149,9 +209,9 @@ public class LoadLevel : MonoBehaviour
     {
         if (canInteract)
         {
-            canInteract = false;
             if (!canPlay)
             {
+                Time.timeScale = 1f;
                 LeanTween.moveY(pause, 7.80f, 0.5f);
                 LeanTween.alphaCanvas(pauseDarkening.GetComponent<CanvasGroup>(), 0f, 0.5f);
                 StartCoroutine(disableDarkPause());
@@ -160,18 +220,127 @@ public class LoadLevel : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 0f;
                 continueButtonAvailable = true;
                 pause.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Pause");
                 canPlay = false;
                 pauseBanner.SetActive(true);
                 pauseDarkening.SetActive(true);
-                LeanTween.alphaCanvas(pauseDarkening.GetComponent<CanvasGroup>(), 0.75f, 0.5f);
-                LeanTween.moveY(pause, -0.2f, 0.5f);
+                LeanTween.alphaCanvas(pauseDarkening.GetComponent<CanvasGroup>(), 0.75f, 0.5f).setIgnoreTimeScale(true);
+                LeanTween.moveY(pause, -0.2f, 0.5f).setIgnoreTimeScale(true);
                 interfaceShow.sprite = Resources.Load<Sprite>("Interface_pause");
             }
         }
     }
 
+    public void HomeButton()
+    {
+        if (canInteract)
+        {
+            canInteract = false;
+            canPlay = false;
+            StartCoroutine(GoBackToMenu());
+        }
+    }
+
+    private IEnumerator GoBackToMenu()
+    {
+        Time.timeScale = 1f;
+        StartCoroutine(ZoonOut());
+        LeanTween.moveY(pause, 7.80f, 0.5f);
+        LeanTween.alphaCanvas(pauseDarkening.GetComponent<CanvasGroup>(), 0f, 0.5f);
+        LeanTween.moveX(transiction_left, 4.020003f, 1f).setIgnoreTimeScale(true);
+        LeanTween.moveX(transiction_right, 4.020003f, 1f).setIgnoreTimeScale(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+    }
+
+    public void NextLevel()
+    {
+        if (canInteract)
+        {
+            if (gameEnded)
+            {
+                canInteract = false;
+                StartCoroutine(LoadNextLevel());
+                
+            }
+        }
+    }
+
+    private IEnumerator LoadNextLevel()
+    {
+        LeanTween.alpha(collectable, 0f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+        LeanTween.moveY(pause, 7.80f, 0.5f);
+        yield return new WaitForSeconds(0.6f);
+        string levelToLoad = "Level" + (level + 1);
+        SaveFile();
+        if(levelToLoad == "Level8")
+        {
+            SceneManager.LoadScene("Win", LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadScene(levelToLoad, LoadSceneMode.Single);
+        }
+
+    }
+
+    private void SaveFile()
+    {
+        SaveData save = new SaveData();
+        try
+        {
+            save = save.LoadData();
+        }
+        catch
+        {
+            save.SaveDataToFile(save);
+        }
+
+        switch (level)
+        {
+            case 1:
+                save.level1 = true;
+                if (gotCollectable)
+                    save.collectable1 = true;
+                break;
+            case 2:
+                save.level2 = true;
+                if (gotCollectable)
+                    save.collectable2 = true;
+                break;
+            case 3:
+                save.level3 = true;
+                if (gotCollectable)
+                    save.collectable3 = true;
+                break;
+            case 4:
+                save.level4 = true;
+                if (gotCollectable)
+                    save.collectable4 = true;
+                break;
+            case 5:
+                save.level5 = true;
+                if (gotCollectable)
+                    save.collectable5 = true;
+                break;
+            case 6:
+                save.level6 = true;
+                if (gotCollectable)
+                    save.collectable6 = true;
+                break;
+            case 7:
+                save.level7 = true;
+                if (gotCollectable)
+                    save.collectable7 = true;
+                break;
+        }
+
+        save.SaveDataToFile(save);
+    }
+    
     private IEnumerator disableDarkPause()
     {
         yield return new WaitForSeconds(0.5f);
@@ -180,7 +349,7 @@ public class LoadLevel : MonoBehaviour
         if (waitingForReset)
         {
             waitingForReset = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
         else
         {
@@ -196,6 +365,13 @@ public class LoadLevel : MonoBehaviour
             interfaceShow.sprite = Resources.Load<Sprite>("Interface_reset");
             StartCoroutine(ResetGame());
         }
+    }
+
+    public void LoseGame()
+    {
+        waitingForReset = true;
+        continueButtonAvailable = true;
+        StartCoroutine(ResetGame());
     }
 
     private IEnumerator ResetGame()
@@ -217,7 +393,7 @@ public class LoadLevel : MonoBehaviour
         else
         {
             canInteract = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         }
         
     }

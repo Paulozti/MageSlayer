@@ -119,8 +119,8 @@ public class DialogueManager : MonoBehaviour
 
     private void LoadDialogueFile() 
     {
-        
-        string path = Application.dataPath+"/Resources/Dialogue.json";
+
+        string path = Application.streamingAssetsPath + "/Dialogue.json";
         string json = File.ReadAllText(path);
         dialogue = JsonUtility.FromJson<Dialogue>(json);
         

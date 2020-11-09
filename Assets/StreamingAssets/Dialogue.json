@@ -1,0 +1,75 @@
+{
+	"chapters": 
+	[
+		{
+			"level": 1,
+			"phrases": 
+			[
+				"Player:Oi",
+				"Inimigo:Oiê",
+				"Player:Ovô te mata!",
+				"Inimigo:Tá bom."
+			]
+		},
+		{
+			"level": 2,
+			"phrases": 
+			[
+				"Player:Oi",
+				"Inimigo:Oiê",
+				"Player:Bora morrer?",
+				"Inimigo:Bora!"
+			]
+		},
+		{
+			"level": 3,
+			"phrases": 
+			[
+				"Player:Salve!",
+				"Inimigo: Salvado!",
+				"Player:Vou te mandar pra outra dimensão.",
+				"Inimigo: Fechou!"
+			]
+		},
+		{
+			"level": 4,
+			"phrases": 
+			[
+				"Player: Dale!",
+				"Inimigo: Coé, quem é tu?",
+				"Player: A mina que veio come seu bolo!",
+				"Inimigo: Só vem. É de morango."
+			]
+		},
+		{
+			"level": 5,
+			"phrases": 
+			[
+				"Player: Fala ai!",
+				"Inimigo: ai",
+				"Player: Cadê o Mestre Mago?",
+				"Inimigo: Sei lá, pergunta no posto Ipiranga."
+			]
+		},
+		{
+			"level": 6,
+			"phrases": 
+			[
+				"Player: E ae pré-cadaver.",
+				"Inimigo: E ae mono-braço.",
+				"Player: Vim fazer a limpa aqui!",
+				"Inimigo: Demoro, não esquece dos cantos, juntam muita poeira."
+			]
+		},
+		{
+			"level": 7,
+			"phrases": 
+			[
+				"Player: Ow Robin Hood, tenho uma pergunta.",
+				"Inimigo: Fala aí, qual é?",
+				"Player: Porque um cego tem 2 tapa-olhos?",
+				"Inimigo: Pra comer seu bolo no escurinho!"
+			]
+		}
+	]
+}

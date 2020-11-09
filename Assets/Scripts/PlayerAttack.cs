@@ -129,7 +129,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack(BlockType Block)
     {
-            Block.ObstacleTakeDamage();
+            Block.ObstacleTakeDamage(LV.orbDestroyed);
             onPlayerAttack?.Invoke();
             PlayerAnimation.SetTrigger("Attack");
     }
@@ -149,16 +149,24 @@ public class PlayerAttack : MonoBehaviour
         if (destinationBlock.type == BlockType.Type.Floor)
         {
             if(originBlock.type == BlockType.Type.MovableRockOnFilledHole)
+            {
+                Destroy(originBlock.transform.GetChild(1).gameObject);
                 originBlock.ChangeBlockType(BlockType.Type.FilledHole);
+            }
             else
+            {
                 originBlock.ChangeBlockType(BlockType.Type.Floor);
+                Destroy(originBlock.transform.GetChild(0).gameObject);
+            }
+                
             destinationBlock.ChangeBlockType(BlockType.Type.MovableRock);
             onPlayerAttack?.Invoke();
             PlayerAnimation.SetTrigger("Attack");
         }
         else if (destinationBlock.type == BlockType.Type.Hole)
         {
-            LV.pos[xOrigin][yOrigin].GetComponent<BlockType>().ChangeBlockType(BlockType.Type.Floor);
+            originBlock.ChangeBlockType(BlockType.Type.Floor);
+            Destroy(originBlock.transform.GetChild(0).gameObject);
             destinationBlock.ChangeBlockType(BlockType.Type.FilledHole);
             destinationBlock.isFilledHole = true;
             onPlayerAttack?.Invoke();
@@ -169,7 +177,11 @@ public class PlayerAttack : MonoBehaviour
             if (originBlock.type == BlockType.Type.MovableRockOnFilledHole)
                 originBlock.ChangeBlockType(BlockType.Type.FilledHole);
             else
+            {
                 originBlock.ChangeBlockType(BlockType.Type.Floor);
+                Destroy(originBlock.transform.GetChild(0).gameObject);
+            }
+                
             destinationBlock.ChangeBlockType(BlockType.Type.MovableRockOnFilledHole);
             onPlayerAttack?.Invoke();
             PlayerAnimation.SetTrigger("Attack");
